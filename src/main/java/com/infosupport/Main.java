@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static java.lang.Math.abs;
 
@@ -23,11 +24,15 @@ public class Main {
 
         Faker f = new Faker();
         System.out.println(f.hitchhikersGuideToTheGalaxy().quote());
+
+        AtomicInteger i = new AtomicInteger();
+        i.incrementAndGet();
     }
 
-    private static void equalityDemo() {
+    private static synchronized void equalityDemo() {
         // equality
-        int i = 0;
+        var i = '0';
+        // i = "90";
         // Wrong 🤮
         // if(i = 0){
         //
