@@ -54,7 +54,7 @@ public class PalindromeChecker {
         return result;
     }
 
-    public static int somArr(int[] nummers) {
+    public static long somArr(int[] nummers) {
         return stream(nummers).sum();
     }
 }

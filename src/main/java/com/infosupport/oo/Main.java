@@ -2,7 +2,7 @@ package com.infosupport.oo;
 
 public class Main {
 
-    public static void main(String[] args) {
+    void main() {
         Person bram = new Person("Bram", "Janssens", 46);
         Person nicky = new Person("Nicky", "Boeijen", 34);
 
@@ -13,6 +13,7 @@ public class Main {
         System.out.println(t.toString());
 
         Trainee t2 = null;
-        t2.getSpecialism();
+        String specialism = t2.getSpecialism(); // NullPointerException!
+        IO.println(specialism);
     }
 }

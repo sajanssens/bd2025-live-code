@@ -10,7 +10,7 @@ import static java.lang.Math.abs;
 
 public class Main {
 
-    public static void main(String[] args) {
+    void main() {
         // import demo ------
         List<Integer> list = new ArrayList<>();
         int abs = abs(-20); // static import
