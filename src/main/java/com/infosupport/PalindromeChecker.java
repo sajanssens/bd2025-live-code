@@ -1,5 +1,7 @@
 package com.infosupport;
 
+import static java.util.Arrays.stream;
+
 public class PalindromeChecker {
 
     /**
@@ -42,5 +44,17 @@ public class PalindromeChecker {
         }
 
         System.out.println("Don't know...");
+    }
+
+    public static long som(int... nummers) {
+        long result = 0;
+        for (int nummer : nummers) {
+            result += nummer;
+        }
+        return result;
+    }
+
+    public static int somArr(int[] nummers) {
+        return stream(nummers).sum();
     }
 }
