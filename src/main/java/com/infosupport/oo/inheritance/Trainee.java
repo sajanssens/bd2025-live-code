@@ -11,7 +11,7 @@ public class Trainee extends Person {
 
     @Override
     public void walk() {
-        System.out.println("Im happy walking");
+        System.out.println("I'm happy walking and learning new things");
     }
 
     public void proggen() {

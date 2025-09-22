@@ -2,6 +2,10 @@ package com.infosupport.oo.inheritance;
 
 public class Teacher extends Person {
 
+    public String getSpecialism() {
+        return specialism;
+    }
+
     private final String specialism;
 
     public Teacher(String name, String sp) {
