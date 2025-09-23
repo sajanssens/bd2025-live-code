@@ -1,5 +1,7 @@
 package com.infosupport.oo.inheritance;
 
+import java.util.Objects;
+
 public class Trainee extends Person {
 
     private final int nr;
@@ -32,5 +34,25 @@ public class Trainee extends Person {
 
         // Sneller is dit:
         return this.nr - other.nr;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Trainee trainee = (Trainee) o;
+        return nr == trainee.nr;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), nr);
+    }
+
+    @Override
+    public String toString() {
+        return "Trainee{" +
+               "nr=" + nr +
+               '}';
     }
 }
