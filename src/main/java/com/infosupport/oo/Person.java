@@ -8,7 +8,7 @@ import static java.lang.IO.println;
 import static java.time.LocalDate.EPOCH;
 import static java.time.LocalDate.now;
 
-public class Person { // POJO
+public class Person implements Comparable<Person> { // POJO
     // STATE: -------------------
     private final String firstName;
     private String lastName;
@@ -76,5 +76,18 @@ public class Person { // POJO
                 ", lastName='" + lastName + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Person other) {
+        return this.dateOfBirth.compareTo(other.dateOfBirth);
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public String getFirstName() {
+        return firstName;
     }
 }
