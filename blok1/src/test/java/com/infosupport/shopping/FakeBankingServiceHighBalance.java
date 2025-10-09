@@ -4,7 +4,7 @@ import com.infosupport.utjava.shopping.service.BankingService;
 
 import java.math.BigDecimal;
 
-public class FakeBankingService implements BankingService {
+public class FakeBankingServiceHighBalance implements BankingService {
     @Override
     public BigDecimal getBalance(String accountNumber) {
         return BigDecimal.valueOf(100000L);

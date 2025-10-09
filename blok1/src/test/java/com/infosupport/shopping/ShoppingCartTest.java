@@ -7,15 +7,16 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ShoppingCartTest {
+class ShoppingCartTest {
 
     private final Product xbox = new Product("Xbox 360", new BigDecimal("199.99"));
     private final Product playstation = new Product("PlayStation3", new BigDecimal(250));
 
     @Test
-    public void add_oneProduct_shouldAddProductToCart() {
+    void add_oneProduct_shouldAddProductToCart() {
         // Arrange
         var sut = new ShoppingCart("Frank");
 
@@ -27,7 +28,7 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void add_twiceSameProduct_shouldAddToExistingAmount() {
+    void add_twiceSameProduct_shouldAddToExistingAmount() {
         var sut = new ShoppingCart("Frank");
         sut.add(xbox, 2);
         sut.add(xbox, 3);
@@ -35,7 +36,7 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void add_twoDifferentProducts_shouldAddBothToCart() {
+    void add_twoDifferentProducts_shouldAddBothToCart() {
         var sut = new ShoppingCart("Frank");
         sut.add(xbox, 1);
         sut.add(playstation, 2);
@@ -44,13 +45,13 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void getTotal_emptyCart_shouldBeZero() {
+    void getTotal_emptyCart_shouldBeZero() {
         var sut = new ShoppingCart("Frank");
         assertEquals(BigDecimal.ZERO, sut.getTotal());
     }
 
     @Test
-    public void getTotal_twoProductsWithDifferentAmount_shouldCalculateCorrectTotal() {
+    void getTotal_twoProductsWithDifferentAmount_shouldCalculateCorrectTotal() {
         var sut = new ShoppingCart("Frank");
         sut.add(playstation, 2); // 500
         sut.add(xbox, 1); // 199.99
@@ -60,7 +61,7 @@ public class ShoppingCartTest {
     @Test
     void checkout_sufficientBalance_succeeds() {
         FakeUserRepository userRepository = new FakeUserRepository();
-        FakeBankingService bankingService = new FakeBankingService();
+        FakeBankingServiceHighBalance bankingService = new FakeBankingServiceHighBalance();
 
         var sut = new ShoppingCart("Frank", userRepository, bankingService);
         sut.add(playstation, 2); // 500
@@ -72,6 +73,21 @@ public class ShoppingCartTest {
         assertTrue(userRepository.isAddPaymentHistoryCalled());
         assertEquals("Frank", userRepository.getUsername());
         assertEquals(sut.getTotal(), userRepository.getPayment());
+    }
+
+    @Test
+    void checkout_sufficientBalance_fails() {
+        FakeUserRepository userRepository = new FakeUserRepository();
+        FakeBankingServiceLowBalance bankingService = new FakeBankingServiceLowBalance();
+
+        var sut = new ShoppingCart("Frank", userRepository, bankingService);
+        sut.add(playstation, 2); // 500
+        sut.add(xbox, 1); // 199.99
+
+        boolean checkout = sut.checkout();
+
+        assertFalse(checkout);
+        assertFalse(userRepository.isAddPaymentHistoryCalled());
     }
 
     private void assertProductIsInCart(ShoppingCart sut, Product expectedItem, int expectedAmount) {
