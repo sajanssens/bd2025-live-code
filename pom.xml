@@ -7,6 +7,11 @@
     <groupId>com.infosupport</groupId>
     <artifactId>bd2025-live-code</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>blok1</module>
+        <module>blok1-mvc-demo</module>
+    </modules>
 
     <properties>
         <maven.compiler.release>25</maven.compiler.release>
@@ -17,9 +22,8 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.40</version>
+            <version>1.18.42</version>
         </dependency>
-
         <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
@@ -37,8 +41,16 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.14.1</version>
                 <configuration>
                     <compilerArgs>--enable-preview</compilerArgs>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.32</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
         </plugins>
