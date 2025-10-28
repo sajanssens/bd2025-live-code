@@ -1,6 +1,8 @@
 package com.infosupport.jpademo.domain;
 
+import com.infosupport.jpademo.BooleanTFConverter;
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -21,6 +23,9 @@ public class Person {
     @Column(name = "genderId")
     private Gender gender;
 
+    @Convert(converter = BooleanTFConverter.class)
+    private boolean isAlive;
+
     public Person() { }
 
     public Person(String name, int age) {
@@ -40,6 +45,10 @@ public class Person {
                 ", age=" + age +
                 ", gender=" + gender +
                 '}';
+    }
+
+    public long getId() {
+        return id;
     }
 
     public void setId(long id) {
