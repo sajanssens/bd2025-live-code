@@ -14,6 +14,7 @@ public class Person {
 
     // @Column
     private String name;
+
     // @Column
     private int age;
 
@@ -39,5 +40,21 @@ public class Person {
                 ", age=" + age +
                 ", gender=" + gender +
                 '}';
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 }
