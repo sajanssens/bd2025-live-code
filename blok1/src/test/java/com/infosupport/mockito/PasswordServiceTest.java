@@ -3,8 +3,14 @@ package com.infosupport.mockito;
 import com.infosupport.utjava.mockito.PasswordService;
 import com.infosupport.utjava.mockito.User;
 import com.infosupport.utjava.mockito.UserRepo;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -49,6 +55,26 @@ class PasswordServiceTest {
     User userOld = new User(id, username, oldPassword);
     User userNew = new User(id, username, newPassword);
 
+    @BeforeAll
+    static void beforeAll() {
+
+    }
+
+    @BeforeEach
+    void setUp() {
+
+    }
+
+    @AfterEach
+    void tearDown() {
+
+    }
+
+    @AfterAll
+    static void afterAll() {
+
+    }
+
     @Test // basic setup and verify of mocks
     void changePassword_userBramAndOldPasswordCorrect_changesPassword() {
         // Arrange
@@ -62,6 +88,22 @@ class PasswordServiceTest {
         assertTrue(changePassword);
         verify(mockedUserRepo).find("bram");
         verify(mockedUserRepo).update("bram", "new");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"bram", "joshua", ""})
+    void changePassword_userBramAndOldPasswordCorrect_changesPassword_PT(String username) {
+        // Arrange
+        when(mockedUserRepo.find(username)).thenReturn(userOld);
+        when(mockedUserRepo.update(username, "new")).thenReturn(userNew);
+
+        // Act
+        boolean changePassword = target.changePassword(username, "old", "new");
+
+        // Assert
+        assertTrue(changePassword);
+        verify(mockedUserRepo).find(username);
+        verify(mockedUserRepo).update(username, "new");
     }
 
     @Test // don't care about exact values, use matchers

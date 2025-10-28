@@ -22,9 +22,9 @@ public class StreamDemo {
                         () -> System.out.println("No person found")
                 );
 
-        List<Person> janssens =
-                persons.stream()
-                        .filter(p -> p.getLastName().equals("Janssens"))
-                        .toList();
+        List<Object[]> janssens = persons.stream()
+                .filter(p -> p.getLastName().equals("Janssens"))
+                .map(p -> new Object[]{p.getFirstName(), p.getLastName()})
+                .toList();
     }
 }

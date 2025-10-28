@@ -9,14 +9,11 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.github.javafaker</groupId>
-            <artifactId>javafaker</artifactId>
-            <version>1.0.2</version>
-        </dependency>
-    </dependencies>
+    <artifactId>blok2</artifactId>
+    <packaging>pom</packaging>
 
-    <artifactId>blok1</artifactId>
+    <modules>
+        <module>jpa</module>
+    </modules>
 
 </project>
