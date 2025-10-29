@@ -15,22 +15,20 @@
         </Console>
 
         <!-- append is false for test purposes so the logfiles are automatically overwritten. Don't use this on production. -->
+        <!--
         <RollingFile name="rollingFile" append="false" fileName="logs/error.log" filePattern="logs/error-%d{yyyy-MM-dd}.%i.log">
             <PatternLayout pattern="${logpattern}"/>
             <Policies>
-                <!-- Rolling once a day -->
+                &lt;!&ndash; Rolling once a day &ndash;&gt;
                 <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
-                <!-- Rolling based on size -->
+                &lt;!&ndash; Rolling based on size &ndash;&gt;
                 <SizeBasedTriggeringPolicy size="2 KB"/>
             </Policies>
         </RollingFile>
+        -->
     </Appenders>
 
     <Loggers>
-        <!--<Logger name="com.example" level="ALL" additivity="true">
-            <AppenderRef ref="rollingFile"/>
-        </Logger>-->
-
         <!--        <Logger name="com.infosupport.jpademo.App" level="TRACE"/>-->
 
         <Logger name="org.hibernate" level="INFO"/>

@@ -1,7 +1,6 @@
 package com.infosupport.jpademo;
 
 import com.infosupport.jpademo.dao.LeaseCarDao;
-import com.infosupport.jpademo.dao.PersonDao;
 import com.infosupport.jpademo.domain.LeaseCar;
 import com.infosupport.jpademo.domain.Person;
 import jakarta.persistence.EntityManagerFactory;
@@ -17,12 +16,12 @@ public class App {
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("MySQL");
 
     void main() {
-        var personDao = new PersonDao(emf);
+        // var personDao = new PersonDao(emf);
         var leaseCarDao = new LeaseCarDao(emf);
 
         var jansen = Person.builder().name("Janssens").age(42).gender(Man).build();
         var car = LeaseCar.builder().brand("Dikke BMW").owner(jansen).build();
         log.debug("Saving person and cascade leasecar.");
-        personDao.create(jansen);
+        leaseCarDao.create(car);
     }
 }
