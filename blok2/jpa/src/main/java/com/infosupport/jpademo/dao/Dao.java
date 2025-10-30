@@ -15,22 +15,12 @@ public class Dao<T extends HasId> {
     }
 
     public T create(T p) {
-        var em = emf.createEntityManager();
-        try {
-            var transaction = em.getTransaction();
-            transaction.begin();
-            em.persist(p);
-            transaction.commit();
-            em.close();
-            return p;
-        } finally {
-            em.close();
-        }
+        return update(p);
     }
 
-    public Object read(int id) {
+    public T read(long id) {
         var em = emf.createEntityManager();
-        Object t = em.find(type, id);
+        T t = em.find(type, id);
         em.close();
         return t;
     }

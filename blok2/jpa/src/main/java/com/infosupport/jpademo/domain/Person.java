@@ -2,8 +2,10 @@ package com.infosupport.jpademo.domain;
 
 import com.infosupport.jpademo.BooleanTFConverter;
 import com.infosupport.jpademo.dao.HasId;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
@@ -28,9 +30,9 @@ public class Person implements HasId {
     @Convert(converter = BooleanTFConverter.class)
     private boolean isAlive;
 
-    @ManyToOne // UNIDI
+    @ManyToOne(fetch = FetchType.LAZY) // UNIDI
     private Company company;
 
-    @ManyToOne // BIDI
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY) // BIDI
     private Department worksAt;
 }

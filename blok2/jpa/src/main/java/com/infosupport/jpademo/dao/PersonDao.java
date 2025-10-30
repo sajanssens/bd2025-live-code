@@ -21,4 +21,19 @@ public class PersonDao extends Dao<Person> {
 
         return resultList;
     }
+
+    public List<Person> findBy(long companyId) {
+        var em = emf.createEntityManager();
+        TypedQuery<Person> query = em.createQuery("""
+                SELECT p 
+                FROM Person p 
+                JOIN FETCH p.company c 
+                JOIN FETCH p.worksAt w 
+                WHERE c.id = :cId""", Person.class);
+        query.setParameter("cId", companyId);
+        List<Person> resultList = query.getResultList();
+        em.close();
+
+        return resultList;
+    }
 }
