@@ -8,19 +8,12 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-import static java.util.stream.Collectors.joining;
-
-@WebServlet("/beers2")
-public class Beers2Servlet extends HttpServlet {
+@WebServlet("/beers3")
+public class Beers3Servlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String beersHtmlList = BeerDao.beers.stream()
-                .map(beer -> "<li>" + beer + "</li>\n")
-                .collect(joining(""));
-
-        req.setAttribute("beers", beersHtmlList);
-
-        req.getRequestDispatcher("beers.jsp").forward(req, resp);
+        req.setAttribute("beers", BeerDao.beers);
+        req.getRequestDispatcher("beers3.jsp").forward(req, resp);
     }
 }
