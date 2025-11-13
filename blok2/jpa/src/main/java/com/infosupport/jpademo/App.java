@@ -28,7 +28,7 @@ public class App {
         var companyDao = new Dao<>(emf, Company.class);
         var departmentDao = new DepartmentDao(emf);
 
-        Company belastingdienst = companyDao.create(Company.builder().name("Belastingdienst").build());
+        var belastingdienst = companyDao.create(Company.builder().name("Belastingdienst").build());
         var iv = Department.builder().name("IV").build();
         var janssens = Person.builder().name("Janssens").age(42).gender(Man).build();
         var janssens2 = Person.builder().name("Janssens2").age(42).gender(Man).build();
@@ -57,9 +57,9 @@ public class App {
         // ... maar dit werkt niet...
         // Use query instead:
         //   JOIN FETCH for collection valued association
-        Department someDepartmentWithWorkers = departmentDao.findWithWorkers(readIv.getId());
+        Department ivWithWorkers = departmentDao.findWithWorkers(readIv.getId());
         log.info("Workers of Department IV: ");
-        someDepartmentWithWorkers.getWorkers().forEach(w -> log.info(w.toString()));
+        ivWithWorkers.getWorkers().forEach(w -> log.info(w.toString()));
 
         //   JOIN FETCH for single valued association
         // eerste even Person aan de company koppelen:
