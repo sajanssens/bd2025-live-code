@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="new server">
+
+    <variable name="MYSQL_HOSTNAME" defaultValue="localhost"/>
+    <variable name="MYSQL_PORT" defaultValue="3306"/>
+    <variable name="MYSQL_DATABASE" defaultValue="beers-db"/>
+    <variable name="MYSQL_ROOT_PASSWORD" defaultValue="root"/>
+    <variable name="MYSQL_USE_SSL" defaultValue="true"/>
+
+    <featureManager>
+        <feature>webProfile-10.0</feature>
+    </featureManager>
+
+    <library id="jdbcLibrary">
+        <fileset dir="jdbcLib" includes="*.jar"/>
+    </library>
+
+    <dataSource id="DefaultDataSource"
+                jndiName="jdbc/beers">
+        <jdbcDriver libraryRef="jdbcLibrary"/>
+        <properties serverName="${MYSQL_HOSTNAME}" portNumber="${MYSQL_PORT}" databaseName="${MYSQL_DATABASE}"
+                    user="root" password="${MYSQL_ROOT_PASSWORD}"
+                    useSSL="${MYSQL_USE_SSL}" allowPublicKeyRetrieval="true" serverTimezone="UTC"/>
+    </dataSource>
+
+    <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443"/>
+    <applicationManager autoExpand="true"/>
+    <ssl id="defaultSSLConfig" trustDefaultCerts="true"/>
+    <applicationMonitor updateTrigger="mbean"/>
+</server>
+

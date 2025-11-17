@@ -5,7 +5,7 @@
              http://xmlns.jcp.org/xml/ns/persistence/persistence_3_2.xsd"
              version="2.2">
 
-    <persistence-unit name="MySQL">
+    <persistence-unit name="MySQL" transaction-type="RESOURCE_LOCAL">
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpademo"/>

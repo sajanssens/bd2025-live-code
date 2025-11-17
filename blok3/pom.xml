@@ -12,6 +12,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>javaweb</module>
+        <module>jee-demos</module>
     </modules>
 
     <artifactId>blok3</artifactId>
