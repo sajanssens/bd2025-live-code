@@ -14,6 +14,6 @@ public class Beers3Servlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("beers", BeerDao.beers);
-        req.getRequestDispatcher("beers3.jsp").forward(req, resp);
+        req.getRequestDispatcher("beerslist.jsp").forward(req, resp);
     }
 }
