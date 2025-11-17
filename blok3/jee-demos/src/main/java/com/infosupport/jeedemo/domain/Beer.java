@@ -18,4 +18,10 @@ public class Beer {
     @Id @GeneratedValue(strategy = IDENTITY)
     private long id;
     private String brand;
+    private double alc;
+
+    public Beer(String brand, double alc) {
+        this.brand = brand;
+        this.alc = alc;
+    }
 }
