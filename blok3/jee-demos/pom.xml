@@ -26,6 +26,13 @@
             <version>9.4.0</version>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <!-- for linting in IDEA -->
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+            <version>3.0.1</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>

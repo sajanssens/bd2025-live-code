@@ -26,6 +26,6 @@
     <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443"/>
     <applicationManager autoExpand="true"/>
     <ssl id="defaultSSLConfig" trustDefaultCerts="true"/>
-    <applicationMonitor updateTrigger="mbean"/>
+    <applicationMonitor updateTrigger="polled"/>
 </server>
 

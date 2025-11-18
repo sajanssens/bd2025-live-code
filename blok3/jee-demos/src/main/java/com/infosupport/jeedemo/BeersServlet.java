@@ -30,8 +30,7 @@ public class BeersServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String brand = req.getParameter("brand");
         Beer beer = new Beer(brand, 4.0);
-        System.out.println(beer);
         beerDao.create(beer);
-        req.getRequestDispatcher("ok.jsp").forward(req, resp);
+        resp.sendRedirect("beers");
     }
 }
