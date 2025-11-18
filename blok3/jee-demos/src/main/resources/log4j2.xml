@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Properties>
+        <Property name="pattern_level_colors">
+            FATAL=bold magenta, ERROR=red, WARN=yellow bold, INFO=WHITE, DEBUG=green bold, TRACE=blue
+        </Property>
+        <property name="logpattern">
+            %highlight{[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{10} - %msg%n}{${pattern_level_colors}}
+        </property>
+    </Properties>
+
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout disableAnsi="false" pattern="${logpattern}"/>
+        </Console>
+
+        <!-- append is false for test purposes so the logfiles are automatically overwritten. Don't use this on production. -->
+        <!--
+        <RollingFile name="rollingFile" append="false" fileName="logs/error.log" filePattern="logs/error-%d{yyyy-MM-dd}.%i.log">
+            <PatternLayout pattern="${logpattern}"/>
+            <Policies>
+                &lt;!&ndash; Rolling once a day &ndash;&gt;
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                &lt;!&ndash; Rolling based on size &ndash;&gt;
+                <SizeBasedTriggeringPolicy size="2 KB"/>
+            </Policies>
+        </RollingFile>
+        -->
+    </Appenders>
+
+    <Loggers>
+        <!--        <Logger name="com.infosupport.jpademo.App" level="TRACE"/>-->
+
+        <Logger name="org.hibernate" level="INFO"/>
+
+        <!-- to show generated sql queries:-->
+        <Logger name="org.hibernate.SQL" level="DEBUG"/>
+        <!--<Logger name="org.hibernate.SQL_SLOW" level="DEBUG"/>-->
+
+        <!-- to show parameter values in queries:-->
+        <Logger name="org.hibernate.orm.jdbc.bind" level="TRACE"/>
+
+        <Root level="TRACE">
+            <AppenderRef ref="console"/>
+            <!-- <AppenderRef ref="rollingFile"/> -->
+        </Root>
+    </Loggers>
+</Configuration>
