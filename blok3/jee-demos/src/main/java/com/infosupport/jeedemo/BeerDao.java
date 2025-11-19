@@ -11,8 +11,7 @@ import org.slf4j.Logger;
 
 import java.util.List;
 
-@RequestScoped
-@BeerQualifier
+@RequestScoped @BEER
 public class BeerDao implements Dao<Beer> {
 
     @Inject @Named("dao")

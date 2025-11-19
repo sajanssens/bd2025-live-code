@@ -21,7 +21,7 @@ public class BeersServlet extends HttpServlet {
     @Inject @Named("general")
     private Logger log;
 
-    @Inject @BeerQualifier
+    @Inject @BEER
     private Dao<Beer> beerDao;
 
     @Override
