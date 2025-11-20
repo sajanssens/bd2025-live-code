@@ -11,6 +11,8 @@ import org.slf4j.Logger;
 
 import java.util.List;
 
+import static java.lang.Long.parseLong;
+
 @RequestScoped @BEER
 public class BeerDao implements Dao<Beer> {
 
@@ -23,6 +25,11 @@ public class BeerDao implements Dao<Beer> {
     public List<Beer> findAll() {
         log.debug("Finding all ....");
         return em.createQuery("select b from Beer b", Beer.class).getResultList();
+    }
+
+    @Override
+    public Beer find(String id) {
+        return em.find(Beer.class, parseLong(id));
     }
 
     @Transactional

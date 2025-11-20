@@ -6,4 +6,6 @@ public interface Dao<T> {
     T create(T t);
 
     List<T> findAll();
+
+    T find(String id);
 }
