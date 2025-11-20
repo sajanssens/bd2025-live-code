@@ -1,27 +1,18 @@
 package com.infosupport.jeedemo.domain;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-import static jakarta.persistence.GenerationType.IDENTITY;
-
-@Data @NoArgsConstructor
-@Builder @AllArgsConstructor
 @Entity
-public class Beer {
-
-    @Id @GeneratedValue(strategy = IDENTITY)
-    private long id;
+@Getter @Setter @ToString @EqualsAndHashCode(callSuper = true)
+@Builder @AllArgsConstructor @NoArgsConstructor
+public class Beer extends JPAEntity {
     private String brand;
     private double alc;
-
-    public Beer(String brand, double alc) {
-        this.brand = brand;
-        this.alc = alc;
-    }
 }

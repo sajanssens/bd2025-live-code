@@ -1,11 +1,10 @@
 package com.infosupport.jeedemo.api.resources;
 
 import com.infosupport.jeedemo.BEER;
-import com.infosupport.jeedemo.Dao;
 import com.infosupport.jeedemo.domain.Beer;
+import com.infosupport.jeedemo.domain.Repo;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
-import jakarta.inject.Named;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Produces;
@@ -17,11 +16,11 @@ import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
 @Produces(APPLICATION_JSON) @Consumes(APPLICATION_JSON)
 public class BeerResource {
 
-    @Inject @Named("general")
+    @Inject
     private Logger log;
 
     @Inject @BEER
-    private Dao<Beer> beerDao;
+    private Repo<Beer> beerDao;
 
     private String id;
 
@@ -33,6 +32,6 @@ public class BeerResource {
     @GET
     @Produces(APPLICATION_JSON)
     public Beer get() {
-        return beerDao.find(this.id);
+        return beerDao.read(Integer.parseInt(this.id));
     }
 }
