@@ -8,6 +8,7 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Produces;
+import lombok.Setter;
 import org.slf4j.Logger;
 
 import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
@@ -22,12 +23,8 @@ public class BeerResource {
     @Inject @BEER
     private Repo<Beer> beerDao;
 
+    @Setter
     private String id;
-
-    public BeerResource with(String id) {
-        this.id = id;
-        return this;
-    }
 
     @GET
     @Produces(APPLICATION_JSON)

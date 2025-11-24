@@ -1,12 +1,12 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
+<%@ page import="java.time.LocalDateTime" %>
 <html>
+    <% String i = LocalDateTime.now().toLocalTime().toString(); %>
     <head>
         <title>JEE-demos</title>
     </head>
     <body>
         <h1>JEE-demos</h1>
-        <br/>
-        <a href="beers">Beers</a>
+        <a href="beers">Go to my Beers <%= i %>
+        </a>
     </body>
 </html>

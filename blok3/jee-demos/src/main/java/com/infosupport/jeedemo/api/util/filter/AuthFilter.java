@@ -19,7 +19,6 @@ import static jakarta.ws.rs.core.Response.Status.UNAUTHORIZED;
 import static jakarta.ws.rs.core.Response.status;
 
 @Provider
-// @Authorized // when using NotAuthorized
 @Priority(Priorities.AUTHENTICATION)
 public class AuthFilter implements ContainerRequestFilter {
 
@@ -31,7 +30,7 @@ public class AuthFilter implements ContainerRequestFilter {
 
     @Override
     public void filter(ContainerRequestContext req) {
-        if (resourceInfo.getResourceMethod().getAnnotation(NotAuthorized.class) != null) {
+        if (resourceInfo.getResourceMethod().isAnnotationPresent(NotAuthorized.class)) {
             return;
         }
 

@@ -19,7 +19,7 @@
             <h5>Add 🍺</h5>
             <form action="beers" method="post" class="d-flex align-items-center">
                 <label for="brand" class="form-label m-1">Brand</label>
-                <input id="brand" type="text" name="brand" class="form-control m-1" style="width:140px;">
+                <input type="text" id="brand" name="brand" class="form-control m-1" style="width:140px;">
                 <input type="submit" value="OK" class="btn btn-secondary m-1">
             </form>
         </div>
