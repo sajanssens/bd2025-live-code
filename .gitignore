@@ -37,3 +37,5 @@ build/
 ### Mac OS ###
 .DS_Store
 /.idea/
+
+/blok3/jee-demos/src/main/resources/META-INF/private-key.pem

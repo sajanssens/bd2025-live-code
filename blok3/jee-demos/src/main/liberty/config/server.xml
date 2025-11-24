@@ -9,6 +9,7 @@
 
     <featureManager>
         <feature>webProfile-10.0</feature>
+        <feature>mpJwt-2.1</feature>
     </featureManager>
 
     <library id="jdbcLibrary">
