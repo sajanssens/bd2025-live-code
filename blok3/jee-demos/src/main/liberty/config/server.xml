@@ -13,7 +13,7 @@
     </featureManager>
 
     <library id="jdbcLibrary">
-        <fileset dir="jdbcLib" includes="*.jar"/>
+        <fileset dir="${shared.resource.dir}/" includes="mysql*.jar"/>
     </library>
 
     <dataSource id="DefaultDataSource"

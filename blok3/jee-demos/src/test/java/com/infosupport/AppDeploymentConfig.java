@@ -11,7 +11,7 @@ import java.time.Duration;
 public class AppDeploymentConfig implements SharedContainerConfiguration {
 
     private static final Network network = Network.newNetwork();
-    private static final String dbName = "people-db";
+    private static final String dbName = "beers-db";
     private static final String dbHost = "mysql-container-it";
     private static final int dbPort = 3306;
 

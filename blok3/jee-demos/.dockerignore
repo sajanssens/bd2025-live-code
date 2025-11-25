@@ -16,4 +16,3 @@ target/test-classes/
 
 # Exclude build logs
 *.log
-

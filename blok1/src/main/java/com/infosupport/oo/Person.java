@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.Objects;
 
-import static java.lang.IO.println;
 import static java.time.LocalDate.EPOCH;
 import static java.time.LocalDate.now;
 
@@ -45,11 +44,11 @@ public class Person implements Comparable<Person> { // POJO
 
     public int loop() {
         if (Period.between(this.dateOfBirth, now()).getYears() < 40) {
-            println("Gaat lekker...");
+            System.out.println("Gaat lekker...");
             return 13;
         }
 
-        println("HIJG HIJG");
+        System.out.println("HIJG HIJG");
         return 8;
     }
 
