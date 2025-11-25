@@ -1,0 +1,19 @@
+# Exclude test reports and dump files that can change during build
+target/surefire-reports/
+target/failsafe-reports/
+target/test-classes/
+*.dump
+*.dumpstream
+
+# Exclude IDE files
+.idea/
+*.iml
+.vscode/
+
+# Exclude git
+.git/
+.gitignore
+
+# Exclude build logs
+*.log
+
