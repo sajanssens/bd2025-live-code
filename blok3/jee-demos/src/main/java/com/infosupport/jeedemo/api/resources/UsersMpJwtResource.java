@@ -22,7 +22,7 @@ import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
 import static java.time.temporal.ChronoUnit.MINUTES;
 import static org.eclipse.microprofile.config.ConfigProvider.getConfig;
 
-@Path("users/mpjwt")
+@Path("mpjwt-users")
 public class UsersMpJwtResource {
 
     @Inject
@@ -33,6 +33,7 @@ public class UsersMpJwtResource {
 
     @POST
     @Produces(APPLICATION_JSON) @Consumes(APPLICATION_JSON)
+    // @NotAuthorized
     @PermitAll
     public User register(User u) {
         u.setPassword(digest(u.getPassword()));
@@ -41,6 +42,7 @@ public class UsersMpJwtResource {
 
     @POST @Path("login")
     @Consumes(APPLICATION_JSON)
+    // @NotAuthorized
     @PermitAll
     public String login(User input) throws GeneralSecurityException, IOException {
         String username = input.getUsername();

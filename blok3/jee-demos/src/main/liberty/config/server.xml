@@ -10,6 +10,7 @@
     <featureManager>
         <feature>webProfile-10.0</feature>
         <feature>mpJwt-2.1</feature>
+        <feature>mpHealth-4.0</feature> <!-- Needed for test containers -->
     </featureManager>
 
     <library id="jdbcLibrary">
@@ -24,7 +25,7 @@
                     useSSL="${MYSQL_USE_SSL}" allowPublicKeyRetrieval="true" serverTimezone="UTC"/>
     </dataSource>
 
-    <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443"/>
+    <httpEndpoint id="defaultHttpEndpoint" httpPort="9081" httpsPort="9444"/>
     <applicationManager autoExpand="true"/>
     <ssl id="defaultSSLConfig" trustDefaultCerts="true"/>
     <applicationMonitor updateTrigger="polled"/>

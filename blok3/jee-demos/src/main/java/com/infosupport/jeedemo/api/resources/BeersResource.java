@@ -5,6 +5,8 @@ import com.infosupport.jeedemo.api.exceptions.QueryParamTooLongException;
 import com.infosupport.jeedemo.api.util.filter.NotAuthorized;
 import com.infosupport.jeedemo.domain.Beer;
 import com.infosupport.jeedemo.domain.Repo;
+import com.infosupport.jeedemo.domain.Role;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
@@ -19,20 +21,20 @@ import java.util.Collection;
 
 import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
 
-@Path("beers")
-public class BeersResource {
+@Path("beers") public class BeersResource {
 
-    @Inject
-    private Logger log;
+    @Inject private Logger log;
 
-    @Inject @BEER
-    private Repo<Beer> beerDao;
+    @Inject @BEER private Repo<Beer> beerDao;
 
-    @Inject
-    private BeerResource beerResource;
+    @Inject private BeerResource beerResource;
 
-    @GET @NotAuthorized
+    @GET
     @Produces(APPLICATION_JSON)
+    // @NotAuthorized
+    // @DenyAll
+    @RolesAllowed(Role.ADMIN)
+    // @PermitAll
     public Collection<Beer> get(@QueryParam("brand") String brand) {
         if (brand != null && brand.length() > 10) {
             // throw new BadRequestException("brand mag niet langer zijn dan 10 tekens");
@@ -41,15 +43,12 @@ public class BeersResource {
         return beerDao.findAll();
     }
 
-    @POST
-    @Produces(APPLICATION_JSON) @Consumes(APPLICATION_JSON)
-    public Beer post(Beer b) {
+    @POST @NotAuthorized @Produces(APPLICATION_JSON) @Consumes(APPLICATION_JSON) public Beer post(Beer b) {
         return beerDao.create(b);
     }
 
     // HIER GEEN WERKWOORD ZOALS @GET GEBRUIKEN!!!
-    @Path("{id}")
-    public BeerResource toBeerResource(@PathParam("id") String id) {
+    @Path("{id}") public BeerResource toBeerResource(@PathParam("id") String id) {
         beerResource.setId(id);
         return beerResource;
     }
