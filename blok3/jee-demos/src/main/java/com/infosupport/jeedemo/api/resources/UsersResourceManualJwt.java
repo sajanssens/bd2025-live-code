@@ -3,6 +3,7 @@ package com.infosupport.jeedemo.api.resources;
 import com.infosupport.jeedemo.api.filter.NoAuthorizationNeeded;
 import com.infosupport.jeedemo.api.util.KeyGeneratorSimple;
 import com.infosupport.jeedemo.domain.User;
+import com.infosupport.jeedemo.domain.UserDto;
 import com.infosupport.jeedemo.domain.UserRepo;
 import io.jsonwebtoken.Jwts;
 import jakarta.inject.Inject;
@@ -19,7 +20,6 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
-import static com.infosupport.jeedemo.api.util.PasswordUtils.digest;
 import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
 import static java.time.LocalDateTime.now;
 
@@ -39,17 +39,16 @@ public class UsersResourceManualJwt {
     @Produces(APPLICATION_JSON) @Consumes(APPLICATION_JSON)
     @NoAuthorizationNeeded
     public User register(User u) {
-        u.setPassword(digest(u.getPassword()));
         return repo.create(u);
     }
 
     @POST @Path("login")
     @Produces(APPLICATION_JSON) @Consumes(APPLICATION_JSON)
     @NoAuthorizationNeeded
-    public User login(User input) {
+    public User login(UserDto input) {
         try {
-            String username = input.getUsername();
-            String password = input.getPassword();
+            String username = input.username();
+            String password = input.password();
 
             User user = repo.findByUsernameAndPassword(username, password);
 

@@ -4,8 +4,6 @@ import com.infosupport.jeedemo.domain.qualifiers.BEER;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import org.slf4j.Logger;
 
 import java.util.List;
@@ -14,9 +12,6 @@ import java.util.List;
 public class BeerRepo extends Repo<Beer> {
 
     @Inject Logger log;
-
-    @PersistenceContext // == @Inject(EM) ==
-    private EntityManager em;
 
     @PostConstruct
     public void postInit() {

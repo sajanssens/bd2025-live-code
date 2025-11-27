@@ -5,12 +5,14 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.BadRequestException;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Collection;
 
 public abstract class Repo<E extends JPAEntity> {
 
-    @PersistenceContext(name = "beers") // Container managed persistence context
+    @Getter @Setter @PersistenceContext // Container managed persistence context
     protected EntityManager em;
 
     @Transactional

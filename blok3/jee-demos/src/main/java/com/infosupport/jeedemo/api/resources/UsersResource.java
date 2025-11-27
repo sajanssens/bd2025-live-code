@@ -1,6 +1,7 @@
 package com.infosupport.jeedemo.api.resources;
 
 import com.infosupport.jeedemo.domain.User;
+import com.infosupport.jeedemo.domain.UserDto;
 import com.infosupport.jeedemo.domain.UserRepo;
 import io.smallrye.jwt.build.Jwt;
 import io.smallrye.jwt.util.KeyUtils;
@@ -15,7 +16,6 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.time.Instant;
 
-import static com.infosupport.jeedemo.api.util.PasswordUtils.digest;
 import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
 import static java.time.temporal.ChronoUnit.MINUTES;
 import static org.eclipse.microprofile.config.ConfigProvider.getConfig;
@@ -29,17 +29,16 @@ public class UsersResource {
     @POST
     @Produces(APPLICATION_JSON) @Consumes(APPLICATION_JSON)
     @PermitAll
-    public User register(User u) {
-        u.setPassword(digest(u.getPassword()));
-        return repo.create(u);
+    public User register(UserDto u) {
+        return repo.create(User.hashed(u.username(), u.password()));
     }
 
     @POST @Path("login")
     @Consumes(APPLICATION_JSON)
     @PermitAll
-    public String login(User input) throws GeneralSecurityException, IOException {
-        String username = input.getUsername();
-        String password = input.getPassword();
+    public String login(UserDto input) throws GeneralSecurityException, IOException {
+        String username = input.username();
+        String password = input.password();
         var user = repo.findByUsernameAndPassword(username, password);
         return issueToken(user);
     }
