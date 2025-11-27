@@ -2,6 +2,7 @@ package com.infosupport.jeedemo.api.resources;
 
 import com.infosupport.jeedemo.api.filter.NoAuthorizationNeeded;
 import com.infosupport.jeedemo.api.util.KeyGeneratorSimple;
+import com.infosupport.jeedemo.domain.TokenDto;
 import com.infosupport.jeedemo.domain.User;
 import com.infosupport.jeedemo.domain.UserDto;
 import com.infosupport.jeedemo.domain.UserRepo;
@@ -45,7 +46,7 @@ public class UsersResourceManualJwt {
     @POST @Path("login")
     @Produces(APPLICATION_JSON) @Consumes(APPLICATION_JSON)
     @NoAuthorizationNeeded
-    public User login(UserDto input) {
+    public TokenDto login(UserDto input) {
         try {
             String username = input.username();
             String password = input.password();
@@ -53,9 +54,7 @@ public class UsersResourceManualJwt {
             User user = repo.findByUsernameAndPassword(username, password);
 
             String jwt = issueToken(user);
-            user.setToken(jwt);
-
-            return user;
+            return new TokenDto(jwt);
         } catch (NoResultException e) {
             throw new NotAuthorizedException("User " + input + " is not authorized.");
         }

@@ -1,5 +1,6 @@
 package com.infosupport.jeedemo.api.resources;
 
+import com.infosupport.jeedemo.domain.TokenDto;
 import com.infosupport.jeedemo.domain.User;
 import com.infosupport.jeedemo.domain.UserDto;
 import com.infosupport.jeedemo.domain.UserRepo;
@@ -29,18 +30,20 @@ public class UsersResource {
     @POST
     @Produces(APPLICATION_JSON) @Consumes(APPLICATION_JSON)
     @PermitAll
-    public User register(UserDto u) {
-        return repo.create(User.hashed(u.username(), u.password()));
+    public User register(User u) {
+        User user = repo.create(u);
+        user.setPassword("**************");
+        return user;
     }
 
     @POST @Path("login")
-    @Consumes(APPLICATION_JSON)
+    @Produces(APPLICATION_JSON) @Consumes(APPLICATION_JSON)
     @PermitAll
-    public String login(UserDto input) throws GeneralSecurityException, IOException {
+    public TokenDto login(UserDto input) throws GeneralSecurityException, IOException {
         String username = input.username();
         String password = input.password();
         var user = repo.findByUsernameAndPassword(username, password);
-        return issueToken(user);
+        return new TokenDto(issueToken(user));
     }
 
     static String issueToken(User user) throws GeneralSecurityException, IOException {

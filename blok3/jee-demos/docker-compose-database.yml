@@ -1,3 +1,5 @@
+name: jee-demos-db-only
+
 services:
   mysql:
     image: mysql:latest

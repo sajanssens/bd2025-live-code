@@ -68,7 +68,7 @@ class DatabaseTestsIT implements WithAssertions {
         // arrange
         String username = "john";
         String password = "doe123!";
-        var u = User.hashed(username, password);
+        var u = User.builder().username(username).password(password).build();
 
         // act
         User created = transactional(this.userRepo, Repo::create, u);

@@ -6,9 +6,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Transient;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -16,7 +17,8 @@ import java.util.Set;
 
 import static com.infosupport.jeedemo.api.util.PasswordUtils.digest;
 
-@Entity @NoArgsConstructor
+@Entity
+@Builder @AllArgsConstructor
 @Getter @Setter @ToString @EqualsAndHashCode(callSuper = true)
 @NamedQueries({
         @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
@@ -29,7 +31,7 @@ public class User extends JPAEntity {
     private String lastName;
     private String firstName;
 
-    @Column(length = 100, nullable = false)
+    @Column(length = 100, nullable = false, unique = true)
     private String username;
 
     @Column(length = 100, nullable = false)
@@ -40,6 +42,8 @@ public class User extends JPAEntity {
 
     @ElementCollection
     private Set<String> roles;
+
+    public User() { }
 
     private User(String username, String hashedPassword) {
         this.username = username;

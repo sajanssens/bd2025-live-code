@@ -7,7 +7,6 @@ import com.infosupport.jeedemo.domain.BeerRepoEJB;
 import com.infosupport.jeedemo.domain.Repo;
 import com.infosupport.jeedemo.domain.Role;
 import com.infosupport.jeedemo.domain.qualifiers.BEER;
-import jakarta.annotation.security.PermitAll;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
@@ -43,7 +42,7 @@ public class BeersResource {
 
     @GET
     @Produces(APPLICATION_JSON)
-    @RolesAllowed(Role.ADMIN)
+    @RolesAllowed({Role.ADMIN, Role.USER})
     public Collection<Beer> get(@QueryParam("brand") String brand) {
         if (brand != null && brand.length() > 10) {
             // throw new BadRequestException("brand mag niet langer zijn dan 10 tekens");
@@ -61,7 +60,7 @@ public class BeersResource {
 
     @POST @Path("ejb")
     @Produces(APPLICATION_JSON) @Consumes(APPLICATION_JSON)
-    @PermitAll
+    @RolesAllowed(Role.ADMIN)
     @LogMethodCall
     public Beer postEJB(Beer b) {
         Future<Integer> integerInTheFuture = beerRepoEJB.fireAndReturnInTheFuture();
