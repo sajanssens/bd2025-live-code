@@ -1,4 +1,4 @@
-package com.infosupport.jeedemo.api.util.filter;
+package com.infosupport.jeedemo.api.filter;
 
 import jakarta.annotation.Priority;
 import jakarta.ws.rs.container.ContainerRequestContext;

@@ -1,6 +1,8 @@
 package com.infosupport.jeedemo.domain;
 
 import jakarta.persistence.Entity;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -15,4 +17,11 @@ import lombok.ToString;
 public class Beer extends JPAEntity {
     private String brand;
     private double alc;
+
+    @Min(0) @Max(100) @Builder.Default
+    private int fillLevel = 100;
+
+    public void sip() {
+
+    }
 }

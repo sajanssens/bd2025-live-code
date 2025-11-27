@@ -8,17 +8,25 @@
     <variable name="MYSQL_USE_SSL" defaultValue="true"/>
 
     <featureManager>
-        <feature>webProfile-10.0</feature>
-        <feature>mpJwt-2.1</feature>
+        <feature>restfulWS-3.1</feature>
+        <feature>jsonb-3.0</feature>
+        <feature>cdi-4.0</feature>
+        <feature>persistence-3.1</feature>
+        <feature>mpOpenAPI-3.1</feature>
+        <feature>enterpriseBeans-4.0</feature>
+        <!--<feature>messaging-3.1</feature>
+        <feature>messagingServer-3.0</feature>
+        <feature>messagingClient-3.0</feature>-->
         <feature>mpHealth-4.0</feature> <!-- Needed for test containers -->
     </featureManager>
+
+    <logging consoleLogLevel="INFO"/>
 
     <library id="jdbcLibrary">
         <fileset dir="${shared.resource.dir}/" includes="mysql*.jar"/>
     </library>
 
-    <dataSource id="DefaultDataSource"
-                jndiName="jdbc/beers">
+    <dataSource id="DefaultDataSource" jndiName="jdbc/beers">
         <jdbcDriver libraryRef="jdbcLibrary"/>
         <properties serverName="${MYSQL_HOSTNAME}" portNumber="${MYSQL_PORT}" databaseName="${MYSQL_DATABASE}"
                     user="root" password="${MYSQL_ROOT_PASSWORD}"
@@ -29,5 +37,10 @@
     <applicationManager autoExpand="true"/>
     <ssl id="defaultSSLConfig" trustDefaultCerts="true"/>
     <applicationMonitor updateTrigger="polled"/>
+
+    <!-- Basic user registry for EJB/ORB support -->
+    <basicRegistry id="basic">
+        <user name="admin" password="admin"/>
+    </basicRegistry>
 </server>
 

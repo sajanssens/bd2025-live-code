@@ -2,5 +2,9 @@
 <beans xmlns="https://jakarta.ee/xml/ns/jakartaee"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/beans_4_1.xsd">
-
+    <!-- to activate interceptors: -->
+    <interceptors>
+        <class>com.infosupport.jeedemo.api.ejbfeatures.LogMethodCallInterceptor</class>
+        <class>com.infosupport.jeedemo.api.ejbfeatures.MeasureMethodDurationInterceptor</class>
+    </interceptors>
 </beans>

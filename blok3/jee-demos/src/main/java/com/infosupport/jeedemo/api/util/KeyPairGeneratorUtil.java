@@ -1,4 +1,4 @@
-package com.infosupport.jeedemo.util;
+package com.infosupport.jeedemo.api.util;
 
 import java.io.FileWriter;
 import java.io.IOException;

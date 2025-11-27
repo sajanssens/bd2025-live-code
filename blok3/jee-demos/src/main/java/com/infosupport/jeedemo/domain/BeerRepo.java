@@ -1,6 +1,7 @@
 package com.infosupport.jeedemo.domain;
 
-import com.infosupport.jeedemo.BEER;
+import com.infosupport.jeedemo.domain.qualifiers.BEER;
+import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
@@ -16,6 +17,11 @@ public class BeerRepo extends Repo<Beer> {
 
     @PersistenceContext // == @Inject(EM) ==
     private EntityManager em;
+
+    @PostConstruct
+    public void postInit() {
+        // ....
+    }
 
     public List<Beer> findAll() {
         log.debug("Finding all ....");

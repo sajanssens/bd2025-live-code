@@ -1,4 +1,4 @@
-package com.infosupport.jeedemo;
+package com.infosupport.jeedemo.domain.qualifiers;
 
 import jakarta.inject.Qualifier;
 

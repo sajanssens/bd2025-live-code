@@ -1,8 +1,8 @@
 package com.infosupport.jeedemo.api.resources;
 
-import com.infosupport.jeedemo.BEER;
 import com.infosupport.jeedemo.domain.Beer;
 import com.infosupport.jeedemo.domain.Repo;
+import com.infosupport.jeedemo.domain.qualifiers.BEER;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;

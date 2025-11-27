@@ -1,4 +1,4 @@
-package com.infosupport.jeedemo.api.util.filter;
+package com.infosupport.jeedemo.api.filter;
 
 import jakarta.ws.rs.NameBinding;
 
@@ -12,5 +12,5 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @NameBinding
 @Retention(RUNTIME)
 @Target({TYPE, METHOD})
-public @interface NotAuthorized {
+public @interface NoAuthorizationNeeded {
 }

@@ -1,28 +1,24 @@
 package com.infosupport.jeedemo.api.resources;
 
-import com.infosupport.jeedemo.api.util.KeyGenerator;
-import com.infosupport.jeedemo.api.util.filter.NotAuthorized;
 import com.infosupport.jeedemo.domain.User;
 import com.infosupport.jeedemo.domain.UserRepo;
-import io.jsonwebtoken.Jwts;
+import io.smallrye.jwt.build.Jwt;
+import io.smallrye.jwt.util.KeyUtils;
+import jakarta.annotation.security.PermitAll;
 import jakarta.inject.Inject;
-import jakarta.persistence.NoResultException;
 import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.NotAuthorizedException;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.Context;
-import jakarta.ws.rs.core.UriInfo;
 
-import java.security.Key;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
+import java.io.IOException;
+import java.security.GeneralSecurityException;
+import java.time.Instant;
 
 import static com.infosupport.jeedemo.api.util.PasswordUtils.digest;
 import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
-import static java.time.LocalDateTime.now;
+import static java.time.temporal.ChronoUnit.MINUTES;
+import static org.eclipse.microprofile.config.ConfigProvider.getConfig;
 
 @Path("users")
 public class UsersResource {
@@ -30,54 +26,32 @@ public class UsersResource {
     @Inject
     private UserRepo repo;
 
-    @Inject
-    private KeyGenerator keyGenerator;
-
-    @Context
-    private UriInfo uriInfo;
-
     @POST
     @Produces(APPLICATION_JSON) @Consumes(APPLICATION_JSON)
-    @NotAuthorized
+    @PermitAll
     public User register(User u) {
         u.setPassword(digest(u.getPassword()));
         return repo.create(u);
     }
 
     @POST @Path("login")
-    @Produces(APPLICATION_JSON) @Consumes(APPLICATION_JSON)
-    @NotAuthorized
-    public User login(User input) {
-        try {
-            String username = input.getUsername();
-            String password = input.getPassword();
-
-            User user = repo.findByUsernameAndPassword(username, password);
-
-            String jwt = issueToken(user);
-            user.setToken(jwt);
-
-            return user;
-        } catch (NoResultException e) {
-            throw new NotAuthorizedException("User " + input + " is not authorized.");
-        }
+    @Consumes(APPLICATION_JSON)
+    @PermitAll
+    public String login(User input) throws GeneralSecurityException, IOException {
+        String username = input.getUsername();
+        String password = input.getPassword();
+        var user = repo.findByUsernameAndPassword(username, password);
+        return issueToken(user);
     }
 
-    private String issueToken(User user) {
-        Key key = keyGenerator.generateKey();
-        String jwt = Jwts.builder()
-                .issuer(uriInfo.getAbsolutePath().toString())
-                .subject("baseball-quiz")
+    static String issueToken(User user) throws GeneralSecurityException, IOException {
+        return Jwt.issuer(getConfig().getValue("mp.jwt.verify.issuer", String.class))
+                .subject("beers")
+                .upn(user.getUsername())
+                .groups(user.getRoles())
                 .claim("username", user.getUsername())
-                .claim("roles", user.getRoles()) // roles toevoegen
-                .issuedAt(new Date())
-                .expiration(toDate(now().plusMinutes(15L)))
-                .signWith(key)
-                .compact();
-        return jwt;
-    }
-
-    private Date toDate(LocalDateTime localDateTime) {
-        return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+                .issuedAt(Instant.now())
+                .expiresAt(Instant.now().plus(30, MINUTES))
+                .sign(KeyUtils.readPrivateKey(getConfig().getValue("jwt.sign.key.location", String.class)));
     }
 }

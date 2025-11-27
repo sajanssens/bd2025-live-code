@@ -1,0 +1,83 @@
+GET http://localhost:9081/jee-demos/api/beers
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJpbmZvc3VwcG9ydCIsInN1YiI6Im1vdmllcyIsInVwbiI6ImJyYW0iLCJncm91cHMiOlsiQURNSU4iXSwidXNlcm5hbWUiOiJicmFtIiwiaWF0IjoxNzY0MTU0MDA3LCJleHAiOjE3NjQxNTU4MDcsImp0aSI6ImM4ZjFkNWRmLWQ2ZjYtNDkzNC1iZjJmLTUzMTk4ZTU2OTg1NiJ9.XSaWOBinBAODdhtl6NNcui056-SYJ1isRB5_hq9HIlh7Mn0nno1CQFptHnCWFzArn_AJy5xCixyG2Lj3vsKftGVbhQF4pyCxmWAjHghN0r-i9-rQoUU8c3iEmJnlPPO2T3ITmYL28MWe5X9rJdH38Ap_dIUKIScX7S0mkg_5ZERoUrtyVoM55uUGOv90NaA-lSn_vH2tQqwQyYvBKNP86gfvr5oQk5JJCy7R5BiJ0VlpXzv9cXtrvZY9Yh-y3pi6G_-Xr3oGVhb1D4WN8THQLu1W6TR7YA9d0fxCxW0qnYyjkRS29ecnlJj3WMTdEAFOz9RzG0ALgSY8myCjhS4GnA
+
+<> 2025-11-26T114730.200.json
+<> 2025-11-26T113822.200.json
+<> 2025-11-26T113206.404.html
+<> 2025-11-26T113152.200.json
+<> 2025-11-26T113140.200.json
+<> 2025-11-26T112920.200.json
+<> 2025-11-26T112858.200.json
+<> 2025-11-26T112136.200.json
+
+###
+
+GET http://localhost:9081/jee-demos/api/beers/1
+
+
+###
+POST http://localhost:9081/jee-demos/api/users
+Content-Type: application/json
+
+{
+  "lastName": "Janssens",
+  "firstName": "Bram",
+  "username": "bram",
+  "password": "bram",
+  "roles": [
+    "ADMIN"
+  ]
+}
+
+<> 2025-11-26T112149.200.json
+<> 2025-11-25T212518.400.txt
+<> 2025-11-25T211950.400.txt
+<> 2025-11-20T160024.200.json
+
+###
+POST http://localhost:9081/jee-demos/api/users/login
+Content-Type: application/json
+
+{
+  "username": "bram",
+  "password": "bram"
+}
+
+<> 2025-11-26T112202.200.json
+<> 2025-11-25T212100.400.txt
+<> 2025-11-20T165640.200.json
+<> 2025-11-20T160242.200.json
+<> 2025-11-20T160054.200.json
+
+
+###
+POST http://localhost:9081/jee-demos/api/mpjwt-users
+Content-Type: application/json
+
+{
+  "lastName": "Janssens",
+  "firstName": "Bram",
+  "username": "bram",
+  "password": "bram",
+  "roles": [
+    "ADMIN"
+  ]
+}
+
+###
+POST http://localhost:9081/jee-demos/api/mpjwt-users/login
+Content-Type: application/json
+
+{
+  "username": "bram",
+  "password": "bram"
+}
+
+<> 2025-11-26T114648.200.octet-stream
+<> 2025-11-26T113726.200.octet-stream
+<> 2025-11-26T113450.200.octet-stream
+<> 2025-11-26T113023.200.octet-stream
+<> 2025-11-26T112836.200.octet-stream
+<> 2025-11-26T112741.200.octet-stream
+<> 2025-11-26T112532.200.octet-stream
+<> 2025-11-26T112439.500.octet-stream

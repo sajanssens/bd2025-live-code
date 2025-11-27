@@ -6,9 +6,8 @@ import jakarta.enterprise.context.ApplicationScoped;
 import javax.crypto.SecretKey;
 
 @ApplicationScoped
-public class KeyGeneratorSimple implements KeyGenerator {
+public class KeyGeneratorSimple {
 
-    @Override
     public SecretKey generateKey() {
         byte[] key = "simplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeysimplekeyoftochnietsimpel".getBytes();
         return Keys.hmacShaKeyFor(key);

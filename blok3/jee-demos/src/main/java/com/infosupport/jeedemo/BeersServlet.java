@@ -2,6 +2,7 @@ package com.infosupport.jeedemo;
 
 import com.infosupport.jeedemo.domain.Beer;
 import com.infosupport.jeedemo.domain.Repo;
+import com.infosupport.jeedemo.domain.qualifiers.BEER;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
@@ -35,7 +36,7 @@ public class BeersServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String brand = req.getParameter("brand");
-        Beer beer = new Beer(brand, 4.0);
+        Beer beer = Beer.builder().brand(brand).build();
         beerDao.create(beer);
         resp.sendRedirect("beers");
     }
