@@ -19,7 +19,7 @@ Content-Type: application/json
 {
   "lastName": "Janssens2",
   "firstName": "Bram2",
-  "username": "user",
+  "username": "user2",
   "password": "user",
   "roles": [
     "USER"

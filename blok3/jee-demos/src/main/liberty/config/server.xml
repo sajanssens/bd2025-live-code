@@ -10,15 +10,16 @@
     <featureManager>
         <feature>jakartaee-10.0</feature>
         <feature>microprofile-6.1</feature>
-        <!--<feature>servlet-6.0</feature>
-        <feature>pages-3.1</feature>
-        <feature>restfulWS-3.1</feature>
         <feature>jsonb-3.0</feature>
-        <feature>cdi-4.0</feature>
-        <feature>persistence-3.1</feature>
-        <feature>mpOpenAPI-3.1</feature>
-        <feature>mpJwt-2.1</feature>
-        <feature>enterpriseBeans-4.0</feature>-->
+        <!--<feature>servlet-6.0</feature>
+<feature>pages-3.1</feature>
+<feature>restfulWS-3.1</feature>
+<feature>jsonb-3.0</feature>
+<feature>cdi-4.0</feature>
+<feature>persistence-3.1</feature>
+<feature>mpOpenAPI-3.1</feature>
+<feature>mpJwt-2.1</feature>
+<feature>enterpriseBeans-4.0</feature>-->
         <!--<feature>messaging-3.1</feature>
         <feature>messagingServer-3.0</feature>
         <feature>messagingClient-3.0</feature>-->

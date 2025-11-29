@@ -134,18 +134,33 @@
             <version>${microshed-testing-core.version}</version>
             <scope>test</scope>
         </dependency>
+        <!--        for my database tests-->
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>6.6.1.Final</version>
             <scope>test</scope>
         </dependency>
+        <!-- JSON-B dependencies for test scope (javax namespace for compatibility) -->
+        <dependency>
+            <groupId>javax.json.bind</groupId>
+            <artifactId>javax.json.bind-api</artifactId>
+            <version>1.0</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.eclipse</groupId>
             <artifactId>yasson</artifactId>
-            <version>3.0.4</version>
+            <version>2.0.4</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.json</artifactId>
+            <version>1.1.4</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <properties>
