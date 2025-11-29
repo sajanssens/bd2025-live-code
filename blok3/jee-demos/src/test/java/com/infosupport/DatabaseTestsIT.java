@@ -16,6 +16,7 @@ import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
+import java.util.UUID;
 import java.util.function.BiFunction;
 
 import static com.infosupport.jeedemo.api.util.PasswordUtils.digest;
@@ -66,7 +67,7 @@ class DatabaseTestsIT implements WithAssertions {
     @Test
     void createAndFindUserByUsernameAndPassword_givesThatUserFromTheDatabaseWithAnId() {
         // arrange
-        String username = "john";
+        String username = "john" + UUID.randomUUID();
         String password = "doe123!";
         var u = User.builder().username(username).password(password).build();
 
@@ -90,8 +91,8 @@ class DatabaseTestsIT implements WithAssertions {
     }
 
     private static void initDatabase() {
-        emfTest = Persistence.createEntityManagerFactory("test-containers");
         System.setProperty("db.port", db.getFirstMappedPort().toString());
         System.setProperty("db.host", db.getHost());
+        emfTest = Persistence.createEntityManagerFactory("test-containers");
     }
 }
