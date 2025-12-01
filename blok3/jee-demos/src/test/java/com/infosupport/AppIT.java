@@ -6,7 +6,6 @@ import com.infosupport.jeedemo.domain.Beer;
 import com.infosupport.jeedemo.domain.TokenDto;
 import com.infosupport.jeedemo.domain.User;
 import com.infosupport.jeedemo.domain.UserDto;
-import io.restassured.mapper.ObjectMapperType;
 import org.junit.jupiter.api.Test;
 import org.microshed.testing.jupiter.MicroShedTest;
 import org.microshed.testing.testcontainers.ApplicationContainer;
@@ -17,6 +16,7 @@ import org.testcontainers.junit.jupiter.Container;
 import java.time.Duration;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.mapper.ObjectMapperType.GSON;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -60,15 +60,14 @@ public class AppIT {
         given().contentType("application/json")
                 .body(gson.toJson(u))
                 .when().post("/api/users")
-                .then().statusCode(200)
-                .extract().as(User.class, ObjectMapperType.GSON);
+                .then().statusCode(200);
 
         var user = given()
                 .contentType("application/json")
                 .body(gson.toJson(new UserDto("admin", "admin")))
                 .when().post("/api/users/login")
                 .then().statusCode(200)
-                .extract().as(TokenDto.class, ObjectMapperType.GSON);
+                .extract().as(TokenDto.class, GSON);
 
         String token = user.token();
 
@@ -89,7 +88,7 @@ public class AppIT {
 
         assertNotNull(beers.getBody());
         assertTrue(beer.asPrettyString().contains("id"));
-        assertTrue(beers.asPrettyString().contains("brand"));
-        assertTrue(beers.asPrettyString().contains("alc"));
+        assertTrue(beer.asPrettyString().contains("brand"));
+        assertTrue(beer.asPrettyString().contains("alc"));
     }
 }

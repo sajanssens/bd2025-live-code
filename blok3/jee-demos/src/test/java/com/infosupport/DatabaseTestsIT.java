@@ -55,7 +55,7 @@ class DatabaseTestsIT implements WithAssertions {
         var b = Beer.builder().brand("Leffe").alc(6.3).build();
 
         // act
-        Beer beerCreated = transactional(this.beerRepo, Repo::create, b);
+        Beer beerCreated = transactional(this.beerRepo, Repo::create, b); // == this.beerRepo.create(b);
         Beer beerRead = this.beerRepo.read(beerCreated.getId());
 
         // assert

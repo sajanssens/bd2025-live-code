@@ -15,10 +15,7 @@ public abstract class Repo<E extends JPAEntity> {
     @Getter @Setter @PersistenceContext // Container managed persistence context
     protected EntityManager em;
 
-    @Transactional
-    public E create(E c) {
-        return em.merge(c);
-    }
+    @Transactional public E create(E c) { return em.merge(c); }
 
     public E read(Integer id) { return em.find(E(), id); }
 
