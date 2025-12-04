@@ -197,6 +197,12 @@
                 <artifactId>liberty-maven-plugin</artifactId>
                 <version>3.11.5</version>
                 <configuration>
+                    <runtimeArtifact>
+                        <groupId>io.openliberty</groupId>
+                        <artifactId>openliberty-runtime</artifactId>
+                        <version>25.0.0.12</version>
+                        <type>zip</type>
+                    </runtimeArtifact>
                     <copyDependencies>
                         <dependencyGroup>
                             <location>jdbcLib</location>
