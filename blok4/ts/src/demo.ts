@@ -11,7 +11,16 @@ interface Person {
     age: number
 }
 
-let person = {firstname: "Bram", age: 46, nonsense: true} as Person
+interface HasNonsense {
+    nonsense: boolean
+}
+
+let iets = {firstname: "Bram", age: 46, nonsense: true}
+iets.age
+iets.firstname
+
+let n = {firstname: "Bram", age: 46, nonsense: true} as HasNonsense
+n.nonsense
 
 let [k, v] = [...keyValue]
 console.log(k);
@@ -25,8 +34,10 @@ console.log(v);
 
 class Client {
 
-    constructor(n: string, age: number = 0) {
+    name: string
 
+    constructor(n: string = "", age: number = 0) {
+        this.name = n
     }
 }
 

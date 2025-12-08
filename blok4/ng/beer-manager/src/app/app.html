@@ -1,0 +1,20 @@
+<h1>Biertjes! </h1>
+<p>Het is vandaag {{ today | date : 'short' }}, tijd voor bier.</p>
+
+<form (ngSubmit)="save(beerForm)" novalidate #beerForm="ngForm">
+  <label for="inputBeerName">Naam</label>
+  <input #beerName="ngModel" type="text" id="inputBeerName"
+         name="inputBeerName" [(ngModel)]="inputBeerName"
+         required minlength="3"/>
+  <button>Opslaan</button>
+  <button (click)="clear($event)">Wissen</button>
+  @if (beerName.dirty) {
+    @if (beerName.hasError('required')) {
+      <div>Required field.</div>
+    }
+    @if (beerName.hasError('minlength')) {
+      <div>Minimal length is {{ beerName.getError('minlength').requiredLength }}</div>
+    }
+  }
+
+</form>
