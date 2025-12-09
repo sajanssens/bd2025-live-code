@@ -15,6 +15,7 @@ export class App {
   protected readonly title = signal('beer-manager');
   today = new Date();
   inputBeerName = "";
+  messages = "";
 
   protected save(form: NgForm) {
     if (form.invalid) {
@@ -30,7 +31,16 @@ export class App {
 
   }
 
-  protected validate(beerNameInput: NgModel) {
-
+  protected validate(beerName: NgModel) {
+    console.log("validate")
+    this.messages = ""
+    if (beerName.dirty) {
+      if (beerName.hasError('required')) {
+        this.messages = "Required field"
+      }
+      if (beerName.hasError('minlength')) {
+        this.messages = "Minimal length is 3."
+      }
+    }
   }
 }
