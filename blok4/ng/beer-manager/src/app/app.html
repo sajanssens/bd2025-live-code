@@ -1,12 +1,28 @@
-<h1>Biertjes! </h1>
-<bm-welcome (saysHello)="handleHelloEvent($event)"/>
-<form (ngSubmit)="save(beerForm)" novalidate #beerForm="ngForm"
-      (change)="validate(beerName)">
-  <label for="inputBeerName">Naam</label>
-  <input type="text" id="inputBeerName" name="inputBeerName"
-         #beerName="ngModel" [(ngModel)]="inputBeerName"
-         required minlength="3"/>
-  <button [disabled]="beerForm.invalid">Opslaan</button>
-  <button (click)="clear($event)">Wissen</button>
-  <div>{{ messages }}</div>
-</form>
+<div class="container">
+
+  <h1>Biertjes!</h1>
+
+  <div class="m-2">{{ messages }}</div>
+  <bm-welcome (saysHello)="handleHelloEvent($event)"/>
+  <bm-beers/>
+
+  <div class="row p-2">
+    <div class="col-4">
+      <form (ngSubmit)="save(beerForm)" novalidate #beerForm="ngForm"
+            (change)="validate(beerName)" class="mb-4">
+        <div class="mb-3">
+          <label for="inputBeerName" class="form-label">Naam</label>
+          <input type="text" id="inputBeerName" name="inputBeerName"
+                 #beerName="ngModel" [(ngModel)]="inputBeerName"
+                 required minlength="3"
+                 class="form-control"/>
+          <button type="submit" (click)="add()" [disabled]="beerForm.invalid" class="btn btn-primary mt-2 me-2">
+            Opslaan
+          </button>
+          <button type="button" (click)="clear($event)" class="btn btn-secondary mt-2">Wissen</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

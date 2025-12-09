@@ -1,0 +1,22 @@
+.expensive {
+  color: black;
+}
+
+.cheap {
+  color: green;
+}
+
+.form-control.ng-valid.ng-touched {
+  //background-image: escape-svg($form-feedback-icon-valid);
+  border-color: greenyellow;
+  //box-shadow: 0 0 2 2;
+  //rgb(greenyellow);
+}
+
+.form-control.ng-invalid.ng-touched {
+  border-color: red;
+  //  background-image: escape-svg($form-feedback-icon-invalid);
+  //  border-color: $form-feedback-invalid-color;
+  //  box-shadow: 0 0 $input-btn-focus-blur $input-focus-width
+  //  rgba($form-feedback-invalid-color, $input-btn-focus-color-opacity);
+}

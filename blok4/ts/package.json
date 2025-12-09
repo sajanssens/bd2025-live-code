@@ -4,8 +4,8 @@
   "description": "",
   "license": "ISC",
   "author": "",
-  "type": "commonjs",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,6 +13,7 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@infosupport/kc-cli": "^6.9.2"
+    "@infosupport/kc-cli": "^6.9.2",
+    "rxjs": "^7.8.2"
   }
 }
