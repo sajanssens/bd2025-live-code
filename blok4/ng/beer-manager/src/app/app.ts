@@ -1,19 +1,18 @@
 import {Component, signal} from '@angular/core';
-import {DatePipe} from '@angular/common';
 import {FormsModule, NgForm, NgModel} from '@angular/forms';
+import {Welcome} from './components/welcome/welcome';
 
 @Component({
   selector: 'app-root',
   imports: [
-    DatePipe,
-    FormsModule
+    FormsModule,
+    Welcome
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
   protected readonly title = signal('beer-manager');
-  today = new Date();
   inputBeerName = "";
   messages = "";
 
@@ -42,5 +41,9 @@ export class App {
         this.messages = "Minimal length is 3."
       }
     }
+  }
+
+  protected handleHelloEvent(event: string) {
+    this.messages = `We said: ${event}`
   }
 }

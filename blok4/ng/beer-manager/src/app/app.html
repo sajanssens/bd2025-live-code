@@ -1,6 +1,5 @@
 <h1>Biertjes! </h1>
-<p>Het is vandaag {{ today | date : 'short' }}, tijd voor bier.</p>
-
+<bm-welcome (saysHello)="handleHelloEvent($event)"/>
 <form (ngSubmit)="save(beerForm)" novalidate #beerForm="ngForm"
       (change)="validate(beerName)">
   <label for="inputBeerName">Naam</label>
@@ -9,5 +8,5 @@
          required minlength="3"/>
   <button [disabled]="beerForm.invalid">Opslaan</button>
   <button (click)="clear($event)">Wissen</button>
-  <span>{{ messages }}</span>
+  <div>{{ messages }}</div>
 </form>
