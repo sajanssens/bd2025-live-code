@@ -2,8 +2,8 @@ import {Component, inject, signal} from '@angular/core';
 import {FormsModule, NgForm, NgModel} from '@angular/forms';
 import {Welcome} from './components/welcome/welcome';
 import {BeersComponent} from './components/beers/beers.component';
-import {BeerService} from './services/beer.service';
 import {Beer} from './model/Beer';
+import {BeerService} from './services/beer.service';
 
 @Component({
   selector: 'bm-root',
@@ -53,7 +53,7 @@ export class App {
   }
 
   protected add() {
-    const b = {id: 1, make: this.inputBeerName} as Beer;
+    const b = {id: Math.floor(Math.random() * 1000), make: this.inputBeerName} as Beer;
     this.beerService.add(b)
   }
 }

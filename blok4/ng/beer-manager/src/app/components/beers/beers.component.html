@@ -1,7 +1,8 @@
 <div class="row p-2">
   <div class="col-4">
     <ul class="list-group">
-      @for (b of beers; track b.id) {
+      <!--      @for (b of beers; track b.id) {-->
+      @for (b of beers$ | async; track b.id) {
         <li class="list-group-item list-group-item-action"
             [class.expensive]="b.price >= 2" [class.cheap]="b.price < 2">
           <div class="row">
