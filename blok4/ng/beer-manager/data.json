@@ -10,7 +10,7 @@
       "id": "2",
       "make": "Leffe",
       "type": "Tripel",
-      "price": 2.09
+      "price": 4.09
     },
     {
       "type": "Pils",
@@ -31,16 +31,16 @@
       "id": "6"
     },
     {
-      "id": 440,
-      "make": "Doppelt"
+      "id": 59058,
+      "make": "Leffe",
+      "type": "Dubbel",
+      "price": 1.95
     },
     {
-      "id": 24,
-      "make": "Doppelt333"
-    },
-    {
-      "id": 748,
-      "make": "Doppelt 333"
+      "id": 47518,
+      "make": "Nicky",
+      "type": "Tripel",
+      "price": 5
     }
   ]
 }

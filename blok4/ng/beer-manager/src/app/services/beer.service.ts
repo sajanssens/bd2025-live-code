@@ -23,9 +23,7 @@ export class BeerService {
 
   getAll(): void {
     this.http.get<Beer[]>(this.url).subscribe(
-      (beersFromBackend) => {
-        this._beersAreUpdated$.next(beersFromBackend)
-      }
+      (beersFromBackend) => this._beersAreUpdated$.next(beersFromBackend)
     )
   }
 
