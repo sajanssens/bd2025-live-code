@@ -19,10 +19,11 @@
         }
       </ul>
       @if (!isLoggedIn()) {
-        <a class="nav-link" routerLinkActive="active" routerLink="login">Login</a>
+        <a class="nav-link p-2" routerLinkActive="active" routerLink="register">Registreer</a>
+        <a class="nav-link p-2" routerLinkActive="active" routerLink="login">Login</a>
       }
       @if (isLoggedIn()) {
-        <a (click)="logout()">Logout</a>
+        <button class="nav-link btn btn-link p-0" type="button" (click)="logout()">Logout</button>
       }
     </div>
   </div>
