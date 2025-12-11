@@ -16,7 +16,7 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="com.infosupport" level="DEBUG"/>
+        <Logger name="com.infosupport" level="INFO"/>
         <!--        <Logger name="com.infosupport.jeedemo.jms" level="TRACE"/>-->
 
         <Logger name="org.hibernate" level="INFO"/>

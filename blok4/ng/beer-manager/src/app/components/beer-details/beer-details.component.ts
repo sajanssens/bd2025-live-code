@@ -10,7 +10,6 @@ import {ActivatedRoute} from '@angular/router';
 export class BeerDetailsComponent {
   protected id = "unknown"
 
-  // eslint-disable-next-line @angular-eslint/prefer-inject
   constructor(private route: ActivatedRoute) {
     // this.id = this.route.snapshot.params['id'];
     this.route.paramMap.subscribe(

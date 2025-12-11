@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light mb-1" style="background-color: rgb(30, 138, 210);">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLinkActive="active" routerLink="/home">
+    <a class="navbar-brand" routerLinkActive="active" routerLink="/">
       <i class="fa-solid fa-beer-mug-empty"></i>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -12,12 +12,18 @@
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="active" routerLink="about">About</a>
         </li>
-        <!--        <li class="nav-item" *ngIf="isLoggedIn()">-->
-        <a class="nav-link" routerLinkActive="active" routerLink="beers">Beers</a>
-        <!--        </li>-->
+        @if (isLoggedIn()) {
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="beers">Beers</a>
+          </li>
+        }
       </ul>
-      <!--      <a *ngIf="!isLoggedIn()" class="nav-link" routerLinkActive="active" routerLink="login">Login</a>-->
-      <!--      <a *ngIf="isLoggedIn()" (click)="logout()">Logout</a>-->
+      @if (!isLoggedIn()) {
+        <a class="nav-link" routerLinkActive="active" routerLink="login">Login</a>
+      }
+      @if (isLoggedIn()) {
+        <a (click)="logout()">Logout</a>
+      }
     </div>
   </div>
 </nav>

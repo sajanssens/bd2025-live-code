@@ -9,10 +9,10 @@ import {Beer} from '../../model/Beer';
   imports: [
     FormsModule
   ],
-  templateUrl: './beer.component.html',
-  styleUrl: './beer.component.scss',
+  templateUrl: './beer-form.component.html',
+  styleUrl: './beer-form.component.scss',
 })
-export class BeerComponent {
+export class BeerFormComponent {
   inputBeerName = "";
   messages = "";
   private beerService = inject(BeerService)

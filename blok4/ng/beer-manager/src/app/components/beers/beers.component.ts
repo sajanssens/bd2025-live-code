@@ -2,14 +2,14 @@ import {Component, inject, OnInit} from '@angular/core';
 import {AsyncPipe, CurrencyPipe} from '@angular/common';
 import {PrettyBeerPipe} from '../../pipes/pretty-beer.pipe';
 import {BeerService} from '../../services/beer.service';
-import {BeerComponent} from '../beer/beer.component';
+import {BeerFormComponent} from '../beer-form/beer-form.component';
 import {RouterLink, RouterOutlet} from '@angular/router';
 
 
 @Component({
   selector: 'bm-beers',
   templateUrl: './beers.component.html',
-  imports: [CurrencyPipe, PrettyBeerPipe, AsyncPipe, BeerComponent, RouterOutlet, RouterLink],
+  imports: [CurrencyPipe, PrettyBeerPipe, AsyncPipe, BeerFormComponent, RouterOutlet, RouterLink],
   styleUrl: './beers.component.scss'
 })
 export class BeersComponent implements OnInit {

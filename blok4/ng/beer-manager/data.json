@@ -31,16 +31,78 @@
       "id": "6"
     },
     {
-      "id": 59058,
+      "id": "59058",
       "make": "Leffe",
       "type": "Dubbel",
       "price": 1.95
     },
     {
-      "id": 47518,
+      "id": "47518",
       "make": "Nicky",
       "type": "Tripel",
       "price": 5
+    }
+  ],
+  "login": [
+    {
+      "username": "bram",
+      "password": "bram",
+      "id": "1"
+    },
+    {
+      "username": "admin",
+      "password": "admin",
+      "id": "2"
+    },
+    {
+      "id": "050e",
+      "username": "admin",
+      "password": "admin"
+    },
+    {
+      "id": "aa43",
+      "username": "admin",
+      "password": "admin"
+    },
+    {
+      "id": "34a5",
+      "username": "admin",
+      "password": "admin"
+    },
+    {
+      "id": "bbe8",
+      "username": "admin",
+      "password": "admin"
+    },
+    {
+      "id": "bf20",
+      "username": "admin",
+      "password": "admin"
+    },
+    {
+      "id": "fd0a",
+      "username": "admin",
+      "password": "admin"
+    },
+    {
+      "id": "caa4",
+      "username": "admin",
+      "password": "admin"
+    },
+    {
+      "id": "2140",
+      "username": "admin",
+      "password": "admin"
+    },
+    {
+      "id": "53b8",
+      "username": "admin",
+      "password": "admin"
+    },
+    {
+      "id": "61fb",
+      "username": "admin",
+      "password": "admin"
     }
   ]
 }
