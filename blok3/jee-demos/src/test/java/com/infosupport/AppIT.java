@@ -71,7 +71,7 @@ public class AppIT {
 
         String token = user.token();
 
-        var b = Beer.builder().brand("Leffe").alc(6.3).build();
+        var b = Beer.builder().make("Leffe").price(6.3).build();
 
         var beer = given().contentType("application/json")
                 .header("Authorization", "Bearer " + token)

@@ -23,7 +23,7 @@ public class BeerRepoEJB {
     private final Logger log = LoggerFactory.getLogger(BeerRepoEJB.class);
 
     // not thread safe! shared beer...
-    private final Beer b = Beer.builder().brand("Shared").alc(5.0).build();
+    private final Beer b = Beer.builder().make("Shared").price(5.0).build();
 
     @PersistenceContext // == @Inject(EM) ==
     private EntityManager em;
@@ -42,9 +42,9 @@ public class BeerRepoEJB {
 
     @Lock(LockType.WRITE) // reading/writing a shared resource, so make it thread safe!
     public void processBeer() {
-        String brand = b.getBrand();
+        String brand = b.getMake();
         brand += "!";
-        b.setBrand(brand);
+        b.setMake(brand);
 
         b.sip();
     }

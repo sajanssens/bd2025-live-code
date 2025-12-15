@@ -14,6 +14,13 @@
 
     <logging consoleLogLevel="INFO"/>
 
+    <cors domain="/beers/api"
+          allowedOrigins="http://localhost:4200"
+          allowedMethods="GET, DELETE, POST, PUT, OPTIONS, HEAD"
+          allowedHeaders="Referer, Content-Type, Accept, Authorization"
+          allowCredentials="true"
+          maxAge="3600"/>
+
     <!-- Basic user registry for EJB/ORB support -->
     <basicRegistry id="basic">
         <user name="admin" password="admin"/>
@@ -52,7 +59,7 @@
         <properties.wasJms destinationRef="paymentTransactionJmsQueue" destinationType="jakarta.jms.Queue"/>
     </jmsActivationSpec>
 
-    <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443"/>
+    <httpEndpoint id="defaultHttpEndpoint" httpPort="9081" httpsPort="9444"/>
     <applicationManager autoExpand="true"/>
     <ssl id="defaultSSLConfig" trustDefaultCerts="true"/>
     <applicationMonitor updateTrigger="polled"/>

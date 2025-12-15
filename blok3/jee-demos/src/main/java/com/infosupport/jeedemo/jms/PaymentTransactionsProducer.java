@@ -2,7 +2,6 @@ package com.infosupport.jeedemo.jms;
 
 import com.github.javafaker.Faker;
 import jakarta.annotation.Resource;
-import jakarta.ejb.Schedule;
 import jakarta.ejb.Singleton;
 import jakarta.ejb.Startup;
 import jakarta.jms.ConnectionFactory;
@@ -23,7 +22,7 @@ public class PaymentTransactionsProducer {
     @Resource(name = "jms/connectionFactory")
     private ConnectionFactory connectionFactory;
 
-    @Schedule(hour = "*", minute = "*", second = "*/1")
+    // @Schedule(hour = "*", minute = "*", second = "*/1")
     public void send() {
         log.debug("About to send 'monthly' payment transactions...");
         for (int i = 0; i < 100; i++) {

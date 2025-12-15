@@ -15,8 +15,9 @@ import lombok.ToString;
 @Getter @Setter @ToString @EqualsAndHashCode(callSuper = true)
 @Builder @AllArgsConstructor @NoArgsConstructor
 public class Beer extends JPAEntity {
-    private String brand;
-    private double alc;
+    private String make;
+    private String type;
+    private double price;
 
     @Min(0) @Max(100) @Builder.Default
     private int fillLevel = 100;

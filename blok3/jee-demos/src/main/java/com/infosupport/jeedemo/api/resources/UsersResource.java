@@ -43,7 +43,7 @@ public class UsersResource {
         String username = input.username();
         String password = input.password();
         var user = repo.findByUsernameAndPassword(username, password);
-        return new TokenDto(issueToken(user));
+        return new TokenDto(issueToken(user), username);
     }
 
     static String issueToken(User user) throws GeneralSecurityException, IOException {

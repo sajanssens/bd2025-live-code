@@ -41,6 +41,12 @@
       "make": "Nicky",
       "type": "Tripel",
       "price": 5
+    },
+    {
+      "id": 5063,
+      "make": "sfss",
+      "type": "Pils",
+      "price": 1.9
     }
   ],
   "login": [

@@ -54,7 +54,7 @@ public class UsersResourceManualJwt {
             User user = repo.findByUsernameAndPassword(username, password);
 
             String jwt = issueToken(user);
-            return new TokenDto(jwt);
+            return new TokenDto(jwt, username);
         } catch (NoResultException e) {
             throw new NotAuthorizedException("User " + input + " is not authorized.");
         }

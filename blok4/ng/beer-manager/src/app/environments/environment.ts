@@ -4,5 +4,6 @@
 
 export const environment = {production: false};
 
-// export const serverUrl = 'http://localhost:9080/jee-demos/api';
+export const loginServerUrl = 'http://localhost:9081/jee-demos/api';
+// export const loginServerUrl = 'http://localhost:3000';
 export const serverUrl = 'http://localhost:3000';

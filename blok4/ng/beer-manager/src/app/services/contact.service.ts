@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
-import {serverUrl} from '../environments/environment';
+import {loginServerUrl} from '../environments/environment';
 import {Contact} from '../model/contact/contact';
 
 
@@ -10,7 +10,7 @@ import {Contact} from '../model/contact/contact';
 })
 export class ContactService {
 
-  uri = serverUrl + '/contacts';
+  uri = loginServerUrl + '/contacts';
 
   constructor(private http: HttpClient) {
   }

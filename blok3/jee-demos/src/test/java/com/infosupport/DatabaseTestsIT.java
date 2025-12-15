@@ -52,7 +52,7 @@ class DatabaseTestsIT implements WithAssertions {
     @Test
     void createAndRead_beer_givesTheSameBeerFromTheDatabase() {
         // arrange
-        var b = Beer.builder().brand("Leffe").alc(6.3).build();
+        var b = Beer.builder().make("Leffe").price(6.3).build();
 
         // act
         Beer beerCreated = transactional(this.beerRepo, Repo::create, b); // == this.beerRepo.create(b);
@@ -60,8 +60,8 @@ class DatabaseTestsIT implements WithAssertions {
 
         // assert
         assertThat(beerRead).isNotNull();
-        assertThat(beerRead.getBrand()).isEqualTo("Leffe");
-        assertThat(beerRead.getAlc()).isEqualTo(6.3);
+        assertThat(beerRead.getMake()).isEqualTo("Leffe");
+        assertThat(beerRead.getPrice()).isEqualTo(6.3);
     }
 
     @Test

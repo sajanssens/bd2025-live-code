@@ -36,7 +36,7 @@ public class BeersServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String brand = req.getParameter("brand");
-        Beer beer = Beer.builder().brand(brand).build();
+        Beer beer = Beer.builder().make(brand).build();
         beerDao.create(beer);
         resp.sendRedirect("beers");
     }
