@@ -19,9 +19,7 @@
                placeholder="1.0" step="0.01" min="0" max="10"
                [(ngModel)]="inputBeerPrice"
                required/>
-        <button type="submit" (click)="add()" [disabled]="beerForm.invalid" class="btn btn-primary mt-2 me-2">
-          Opslaan
-        </button>
+        <button type="submit" [disabled]="beerForm.invalid" class="btn btn-primary mt-2 me-2">Opslaan</button>
         <button type="button" (click)="clear($event)" class="btn btn-secondary mt-2">Wissen</button>
       </div>
     </form>

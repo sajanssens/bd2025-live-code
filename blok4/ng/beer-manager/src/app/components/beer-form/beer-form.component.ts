@@ -24,6 +24,7 @@ export class BeerFormComponent {
       console.log("Try again...")
     } else {
       console.log(`Saving ${this.inputBeerName}`)
+      this.add()
     }
   }
 
@@ -47,7 +48,7 @@ export class BeerFormComponent {
     }
   }
 
-  protected add() {
+  private add() {
     const b = {
       id: Math.floor(Math.random() * 100000),
       make: this.inputBeerName,

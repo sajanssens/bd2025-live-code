@@ -43,8 +43,44 @@
       "price": 5
     },
     {
-      "id": 5063,
+      "id": "5063",
       "make": "sfss",
+      "type": "Pils",
+      "price": 1.9
+    },
+    {
+      "id": 61003,
+      "make": "ddfffffff",
+      "type": "Pils",
+      "price": 1.9
+    },
+    {
+      "id": 29767,
+      "make": "dsada",
+      "type": "Tripel",
+      "price": 1.9
+    },
+    {
+      "id": 66153,
+      "make": "Leffe",
+      "type": "Blond",
+      "price": 0.03
+    },
+    {
+      "id": 82149,
+      "make": "Leffe",
+      "type": "Blond",
+      "price": 0.03
+    },
+    {
+      "id": 112,
+      "make": "sdsd",
+      "type": "Pils",
+      "price": 1.9
+    },
+    {
+      "id": 17912,
+      "make": "fdsdfdsf",
       "type": "Pils",
       "price": 1.9
     }
